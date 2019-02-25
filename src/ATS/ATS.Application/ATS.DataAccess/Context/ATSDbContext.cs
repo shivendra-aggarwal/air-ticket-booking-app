@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ATS.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,10 @@ namespace ATS.DataAccess.Context
         {
 
         }
+
+        public HashSet<AirVendor> AirVendors { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
