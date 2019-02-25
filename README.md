@@ -1,1 +1,1 @@
-# air-ticket-booking-app
+# Air Ticketing System (ATS)
