@@ -1,6 +1,6 @@
 using System;
 
-namespace ATS.Web.Models
+namespace ATS.UI.Models
 {
     public class ErrorViewModel
     {

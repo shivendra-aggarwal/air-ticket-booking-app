@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ATS.Web.Models;
+using ATS.UI.Models;
 
 namespace ATS.Web.Controllers
 {

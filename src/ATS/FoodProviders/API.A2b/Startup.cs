@@ -26,7 +26,7 @@ namespace API.A2b
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<A2bDbContext>(options =>
-                options.UseInMemoryDatabase("Data Source=test.db"));
+                options.UseInMemoryDatabase("Data Source=a2b.db"));
 
             services.AddMvc();
         }

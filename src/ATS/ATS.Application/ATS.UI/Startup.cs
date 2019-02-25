@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ATS.DataAccess.Context;
+using ATS.DataAccess.Repositories;
+using ATS.DataAccess.Repositories.Interfaces;
+using ATS.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +28,14 @@ namespace ATS.Web
         {
             services.AddDbContext<ATSDbContext>(options =>
                 options.UseInMemoryDatabase("Data Source = ATS.db"));
+
+            #region Respositories Registration
+            services.AddScoped<IAirVendorRepository, AirVendorRepository>();
+            #endregion
+
+            #region Business Services registration
+
+            #endregion
 
             services.AddMvc();
         }
