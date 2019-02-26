@@ -15,7 +15,9 @@ namespace ATS.DataAccess.Context
         }
 
         public HashSet<AirVendor> AirVendors { get; set; }
-        
+
+        public HashSet<Booking> Bookings { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ATS.Business.AirVendors.GoAir;
-using ATS.Business.Interfaces;
+﻿using ATS.Business.Interfaces;
 using ATS.UI.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
+using static ATS.Common.ATSEnums;
 
 namespace ATS.UI.Controllers
 {
@@ -13,10 +11,12 @@ namespace ATS.UI.Controllers
     {
         private readonly IServiceProvider serviceProvider;
         private readonly IAirVendorManager airVendorManager;
+        private readonly IBookingManager bookingManager;
         public BookingController(IServiceProvider serviceProvider)
         {
             this.serviceProvider = serviceProvider;
             airVendorManager = (IAirVendorManager)serviceProvider.GetService(typeof(IAirVendorManager));
+            bookingManager = (IBookingManager)serviceProvider.GetService(typeof(IBookingManager));
 
         }
         public async Task<IActionResult> Index()
@@ -28,9 +28,20 @@ namespace ATS.UI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateBooking(BookingViewModel bookingViewModel)
+        public async Task<IActionResult> CreateBooking(BookingViewModel bookingViewModel)
         {
-            return new EmptyResult();
+            var bookingDetails = await bookingManager.CreateBooking(new DTO.BookingDTO()
+            {
+                BookingReferenceNumber = Guid.NewGuid(),
+                BookingAmount = int.Parse(bookingViewModel.TotalAmount),
+                BookingDate = DateTime.Now,
+                BookingExternalSeatId = Guid.Parse(bookingViewModel.SelectedSeatId),
+                BookingVendorName = bookingViewModel.SelectedSeatVendorName
+            });
+
+            bookingViewModel.BookinStatus = Enum.GetName(typeof(BookingStatus), (BookingStatus)bookingDetails.BookingStatus);
+
+            return View(bookingViewModel);
         }
     }
 }

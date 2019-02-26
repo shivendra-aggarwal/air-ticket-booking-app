@@ -1,18 +1,23 @@
 ﻿using ATS.Business.AirVendors.GoAir.Data;
 using ATS.Business.Interfaces;
+using ATS.Business.Interfaces.AirVendors;
 using ATS.DTO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
-using System.Net.NetworkInformation;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ATS.Business.AirVendors.GoAir
 {
-    public class GoAirAirlines : BaseAirVendor, IAirVendor, ISeats
+    public class GoAirAirlines : BaseAirVendor, IAvailable, ISeats, IBookSeat
     {
+        /// <summary>
+        /// This method will help to check the availability for registered vendor
+        /// </summary>
+        /// <param name="airVendorDTO"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<SeatDTO>> GetAvailableSeats(AirVendorDTO airVendorDTO)
         {
             IEnumerable<SeatDTO> result = null;
@@ -39,6 +44,31 @@ namespace ATS.Business.AirVendors.GoAir
                             VendorName = g.VendorName
                         });
                     }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// This method will call respective airline put end point to update seat details against 
+        /// booking reference id
+        /// </summary>
+        /// <param name="bookingDTO"></param>
+        /// <returns></returns>
+        public async Task<bool> ProcessSeatBooking(BookingDTO bookingDTO)
+        {
+            bool result = default(bool);
+            using (var httpClient = new HttpClient())
+            {
+                HttpContent content = new StringContent(JsonConvert.SerializeObject(bookingDTO), Encoding.UTF8, "application/json");
+                var response = await httpClient.PutAsync(bookingDTO.AccessUrl + "/api/Put", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonString = await response.Content.ReadAsStringAsync();
+                    var bookingConfirmation = JsonConvert.DeserializeObject<bool>(jsonString);
+
+                    result = bookingConfirmation;
                 }
             }
 

@@ -1,11 +1,11 @@
 ﻿using ATS.Business.Interfaces;
+using ATS.Business.Interfaces.AirVendors;
 using ATS.DataAccess.Repositories.Interfaces;
 using ATS.DTO;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ATS.Business.AirVendors
 {
@@ -49,7 +49,7 @@ namespace ATS.Business.AirVendors
 
                 foreach (var vendor in airVendorDTOs)
                 {
-                    IAirVendor airVendor = await airVendorObjectManager.GetObjectByType(vendor.VendorName) as IAirVendor;
+                    IAvailable airVendor = await airVendorObjectManager.GetObjectByType(vendor.VendorName) as IAvailable;
 
                     if (airVendor != null)
                     {
@@ -59,20 +59,57 @@ namespace ATS.Business.AirVendors
                     if (vendor.AvailabilityStatus)
                     {
                         ISeats seats = await airVendorObjectManager.GetObjectByType(vendor.VendorName) as ISeats;
-                        if(seats != null)
+                        if (seats != null)
                         {
                             availableSeats.AddRange(await seats.GetAvailableSeats(vendor));
                         }
-                        
+
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
 
             return availableSeats;
+        }
+
+        /// <summary>
+        /// This method is responsible to process for booking transaction with confirming from different vendors
+        /// and storing booking details in database
+        /// </summary>
+        /// <param name="bookingDTO"></param>
+        /// <returns></returns>
+        public async Task<bool> ProcessBooking(BookingDTO bookingDTO)
+        {
+            bool result = default(bool);
+            try
+            {
+                var airVendors = await airVendorRepository.Get();
+
+                bookingDTO.AccessUrl = airVendors.FirstOrDefault(av => string.Equals(av.VendorName, bookingDTO.BookingVendorName, StringComparison.OrdinalIgnoreCase))?.AccessUrl;
+
+                IBookSeat bookSeat = await airVendorObjectManager.GetObjectByType(bookingDTO.BookingVendorName) as IBookSeat;
+
+                if (bookSeat == null)
+                {
+                    throw new Exception(bookingDTO.BookingVendorName + " is not registered properly, please check with administrator");
+                }
+
+                if(!await bookSeat.ProcessSeatBooking(bookingDTO))
+                {
+                    throw new Exception("Booking confirmation not received, please try later");
+                }
+
+                result = true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return result;
         }
     }
 }

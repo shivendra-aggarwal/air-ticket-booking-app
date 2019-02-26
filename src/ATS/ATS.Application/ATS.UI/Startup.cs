@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ATS.Business.AirVendors;
 using ATS.Business.AirVendors.GoAir;
 using ATS.Business.AirVendors.JetAir;
+using ATS.Business.Booking;
 using ATS.Business.Interfaces;
 using ATS.DataAccess.Context;
 using ATS.DataAccess.Data;
@@ -53,12 +54,14 @@ namespace ATS.UI
 
             #region Respositories Registration
             services.AddScoped<IAirVendorRepository, AirVendorRepository>();
+            services.AddScoped<IBookingRepository, BookingRepository>();
             #endregion
 
             #region Business Services registration
             services.AddScoped<IAirVendorManager, AirVendorManager>();
             services.AddScoped<IAirVendorObjectManager, AirVendorObjectManager>();
             services.AddScoped<IAirVendorFactory, AirVendorFactory>();
+            services.AddScoped<IBookingManager, BookingManager>();
             services.AddScoped<GoAirAirlines, GoAirAirlines>();
             services.AddScoped<JetAirAirlines, JetAirAirlines>();
             services.AddScoped<HandleExceptionAttribute>();

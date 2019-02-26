@@ -2,7 +2,7 @@
 
 namespace ATS.DataAccess.Repositories.Interfaces
 {
-    public interface IAirVendorRepository : IRepository<AirVendor>
+    public interface IBookingRepository : IRepository<Booking>
     {
 
     }
