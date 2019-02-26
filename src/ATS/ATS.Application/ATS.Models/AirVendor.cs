@@ -4,8 +4,10 @@ namespace ATS.Models
 {
     public class AirVendor : BaseEntity
     {
-        public int AirVendorId { get; set; }
-
         public string AccessUrl { get; set; }
+
+        public string VendorName { get; set; }
+
+        public string AvailabilityTestUrl { get; set; }
     }
 }

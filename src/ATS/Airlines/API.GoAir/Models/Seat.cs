@@ -9,13 +9,13 @@ namespace API.GoAir.Models
     {
         public int SeatId { get; set; }
 
-        public DateTime AvailableDate { get; set; }
+        public DateTime Date { get; set; }
 
         public int BasePrice { get; set; }
 
-        public string FromCityName { get; set; }
+        public string FromCity { get; set; }
 
-        public string ToCityName { get; set; }
+        public string ToCity { get; set; }
 
         public string FlightNumber { get; set; }
 
