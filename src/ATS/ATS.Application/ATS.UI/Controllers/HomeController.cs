@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ATS.UI.Models;
 
-namespace ATS.Web.Controllers
+namespace ATS.UI.Controllers
 {
     public class HomeController : Controller
     {
