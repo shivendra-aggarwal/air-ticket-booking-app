@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ATS.Business.Interfaces
 {
-    public interface ISeats
+    public interface IAirVendorManager
     {
-        Task<IEnumerable<SeatDTO>> GetAvailableSeats(AirVendorDTO airVendorDTO);
+        Task<IEnumerable<SeatDTO>> GetAllSeats();
     }
 }

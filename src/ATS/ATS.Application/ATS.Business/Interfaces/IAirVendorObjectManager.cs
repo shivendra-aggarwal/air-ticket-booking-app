@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace ATS.Business.Interfaces
 {
-    public interface IAirVendor
+    public interface IAirVendorObjectManager
     {
-        Task<bool> CheckAvailability(string accessUrl);
+        Task<object> GetObjectByType(string name);
     }
 }

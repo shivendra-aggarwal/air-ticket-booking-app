@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ATS.DataAccess\ATS.DataAccess.csproj" />
+    <ProjectReference Include="..\ATS.DTO\ATS.DTO.csproj" />
+  </ItemGroup>
+
 </Project>
