@@ -28,7 +28,7 @@ namespace ATS.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateBooking([FromBody]BookingViewModel bookingViewModel)
+        public IActionResult CreateBooking(BookingViewModel bookingViewModel)
         {
             return new EmptyResult();
         }

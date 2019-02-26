@@ -36,7 +36,7 @@
                         <td>@seat.VendorName</td>
                         <td>
                             <label class="radio-inline">
-                                <input style="margin:-6px 0 0;" type="radio" name="@seat.ExternalId">
+                                <input style="margin:-6px 0 0;" type="radio" onclick="assignSeat('@seat.ExternalId')">
                             </label>
                         </td>
                     </tr>
@@ -47,5 +47,20 @@
     </table>
 
     <h2>Booking Details:</h2>
+    @using (Html.BeginForm("CreateBooking", "Booking", FormMethod.Post, new { name = "booking-select-form" }))
+    {
+        @Html.HiddenFor(model => model.SelectedSeatId, new { id = "selected_seat" })
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12 pull-right center">
+                    <button type="button" id="create_request_button" class="btn btn-default btn-blue" disabled>SUBMIT</button>
+                </div>
+            </div>
+        </div>
+    }
 
 </div>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/booking.js" asp-append-version="true"></script>
+
