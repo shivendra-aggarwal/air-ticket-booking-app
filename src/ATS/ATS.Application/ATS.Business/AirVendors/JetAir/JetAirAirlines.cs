@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace ATS.Business.AirVendors.JetAir
 {
-    public class JetAirAirlines : BaseAirVendor //, IAirVendor, ISeats
+    public class JetAirAirlines : BaseAirVendor, IAirVendor, ISeats
     {
         public async Task<IEnumerable<SeatDTO>> GetAvailableSeats(AirVendorDTO airVendorDTO)
         {

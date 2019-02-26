@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static API.GoAir.Data.Enumerations.GoAirEnums;
+using static API.JetAir.Data.Enumerations.JetAirEnums;
 
-namespace API.GoAir.Data
+namespace API.JetAir.Data
 {
     public class InitializeDb
     {
-        public static void LoadSeats(GoAirDbContext context)
+        public static void LoadSeats(JetAirDbContext context)
         {
             int count = 0;
             if (!context.Seats.Any())
@@ -20,7 +20,7 @@ namespace API.GoAir.Data
                     BasePrice = 200,
                     FromCity = CityName.Delhi.ToString(),
                     ToCity = CityName.Pune.ToString(),
-                    FlightNumber = "GA-1012",
+                    FlightNumber = "JA-1012",
                     SeatType = SeatType.Window.ToString(),
                     SeatNumber = 34,
                     ExternalId = Guid.NewGuid(),
@@ -34,7 +34,7 @@ namespace API.GoAir.Data
                     BasePrice = 300,
                     FromCity = CityName.Delhi.ToString(),
                     ToCity = CityName.Pune.ToString(),
-                    FlightNumber = "GA-1012",
+                    FlightNumber = "JA-1012",
                     SeatType = SeatType.Aisle.ToString(),
                     SeatNumber = 33,
                     ExternalId = Guid.NewGuid(),
@@ -47,7 +47,7 @@ namespace API.GoAir.Data
                     BasePrice = 300,
                     FromCity = CityName.Delhi.ToString(),
                     ToCity = CityName.Bengaluru.ToString(),
-                    FlightNumber = "GA-1022",
+                    FlightNumber = "JA-1022",
                     SeatType = SeatType.Window.ToString(),
                     SeatNumber = 21,
                     ExternalId = Guid.NewGuid(),
@@ -60,7 +60,7 @@ namespace API.GoAir.Data
                     BasePrice = 400,
                     FromCity = CityName.Delhi.ToString(),
                     ToCity = CityName.Chennai.ToString(),
-                    FlightNumber = "GA-1019",
+                    FlightNumber = "JA-1019",
                     SeatType = SeatType.Window.ToString(),
                     SeatNumber = 20,
                     ExternalId = Guid.NewGuid(),
@@ -74,7 +74,7 @@ namespace API.GoAir.Data
                 //    BasePrice = 250,
                 //    FromCity = CityName.Delhi.ToString(),
                 //    ToCity = CityName.Pune.ToString(),
-                //    FlightNumber = "GA-1012",
+                //    FlightNumber = "JA-1012",
                 //    SeatType = SeatType.Window.ToString(),
                 //    SeatNumber = 31,
                 //    ExternalId = Guid.NewGuid(),
@@ -87,7 +87,7 @@ namespace API.GoAir.Data
                 //    BasePrice = 150,
                 //    FromCity = CityName.Delhi.ToString(),
                 //    ToCity = CityName.Chandigarh.ToString(),
-                //    FlightNumber = "GA-1049",
+                //    FlightNumber = "JA-1049",
                 //    SeatType = SeatType.Window.ToString(),
                 //    SeatNumber = 18,
                 //    ExternalId = Guid.NewGuid(),
@@ -101,7 +101,7 @@ namespace API.GoAir.Data
                 //    BasePrice = 180,
                 //    FromCity = CityName.Delhi.ToString(),
                 //    ToCity = CityName.Chandigarh.ToString(),
-                //    FlightNumber = "GA-1049",
+                //    FlightNumber = "JA-1049",
                 //    SeatType = SeatType.Aisle.ToString(),
                 //    SeatNumber = 10,
                 //    ExternalId = Guid.NewGuid(),
@@ -114,7 +114,7 @@ namespace API.GoAir.Data
                 //    BasePrice = 200,
                 //    FromCity = CityName.Delhi.ToString(),
                 //    ToCity = CityName.Chandigarh.ToString(),
-                //    FlightNumber = "GA-1049",
+                //    FlightNumber = "JA-1049",
                 //    SeatType = SeatType.Window.ToString(),
                 //    SeatNumber = 12,
                 //    ExternalId = Guid.NewGuid(),
@@ -127,7 +127,7 @@ namespace API.GoAir.Data
                 //    BasePrice = 250,
                 //    FromCity = CityName.Delhi.ToString(),
                 //    ToCity = CityName.Pune.ToString(),
-                //    FlightNumber = "GA-1012",
+                //    FlightNumber = "JA-1012",
                 //    SeatType = SeatType.Window.ToString(),
                 //    SeatNumber = 28,
                 //    ExternalId = Guid.NewGuid(),
@@ -138,7 +138,7 @@ namespace API.GoAir.Data
             }
         }
 
-        public static void LoadAllocatedSeats(GoAirDbContext context)
+        public static void LoadAllocatedSeats(JetAirDbContext context)
         {
             int count = 0;
             if (!context.AllocatedSeats.Any())

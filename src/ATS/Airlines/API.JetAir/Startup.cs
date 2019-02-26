@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.JetAir.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -23,11 +25,13 @@ namespace API.JetAir
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<JetAirDbContext>(options =>
+                options.UseInMemoryDatabase("Data Source=jetair.db"));
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, JetAirDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -35,6 +39,9 @@ namespace API.JetAir
             }
 
             app.UseMvc();
+            InitializeDb.LoadSeats(context);
+
+            InitializeDb.LoadAllocatedSeats(context);
         }
     }
 }
