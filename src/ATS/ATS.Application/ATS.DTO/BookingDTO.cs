@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ATS.Models
+namespace ATS.DTO
 {
-    public class Booking : BaseEntity
+    public class BookingDTO
     {
         public DateTime BookingDate { get; set; }
 

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ATS.UI.Controllers
 {
-    public class BookingController : Controller
+    public class BookingController : BaseController
     {
         private readonly IServiceProvider serviceProvider;
         private readonly IAirVendorManager airVendorManager;
@@ -21,12 +21,16 @@ namespace ATS.UI.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var obj = serviceProvider.GetService(typeof(GoAirAirlines));
-            var airVendor = obj as IAirVendor;
             BookingViewModel bookingViewModel = new BookingViewModel();
             bookingViewModel.AvailableSeats = await airVendorManager.GetAllSeats();
             
             return View(bookingViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateBooking([FromBody]BookingViewModel bookingViewModel)
+        {
+            return new EmptyResult();
         }
     }
 }

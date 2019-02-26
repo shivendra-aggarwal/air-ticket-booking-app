@@ -11,11 +11,15 @@ using ATS.DataAccess.Data;
 using ATS.DataAccess.Repositories;
 using ATS.DataAccess.Repositories.Interfaces;
 using ATS.Models;
+using ATS.UI.Attributes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace ATS.UI
 {
@@ -31,6 +35,19 @@ namespace ATS.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Below code will help to protect all incoming request to server by having check on Anti forgery token
+            services.AddMvc(options =>
+                    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()))
+                    .AddJsonOptions(options =>
+                    {
+                        options.SerializerSettings.ContractResolver =
+                            new CamelCasePropertyNamesContractResolver();
+                        options.SerializerSettings.StringEscapeHandling = StringEscapeHandling.EscapeHtml;
+                        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    });
+
+            services.AddDataProtection();
+
             services.AddDbContext<ATSDbContext>(options =>
                 options.UseSqlite("Data Source=ATSTest.db"));
 
@@ -42,12 +59,9 @@ namespace ATS.UI
             services.AddScoped<IAirVendorManager, AirVendorManager>();
             services.AddScoped<IAirVendorObjectManager, AirVendorObjectManager>();
             services.AddScoped<IAirVendorFactory, AirVendorFactory>();
-            //services.AddScoped<ISeats, GoAirAirlines>();
-            //services.AddScoped<ISeats, JetAirAirlines>();
-            //services.AddScoped<IAirVendor, GoAirAirlines>();
-            //services.AddScoped<IAirVendor, JetAirAirlines>();
             services.AddScoped<GoAirAirlines, GoAirAirlines>();
             services.AddScoped<JetAirAirlines, JetAirAirlines>();
+            services.AddScoped<HandleExceptionAttribute>();
             #endregion
 
             services.AddMvc();
