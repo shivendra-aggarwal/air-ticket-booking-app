@@ -13,3 +13,19 @@ Air Ticketing System (ATS) is a new startup which is focused towards its users. 
 ## ATS Architecture diagram ##
 
 <img src="/src/images/Architecture.JPG" width="550"/>
+
+## Technology's ##
+
+* Microsoft .Net Cor 2.0
+* Entity Framework Core 2.0
+* .Net core build in dependency injection
+* .Net Core Web Api
+* Jquery
+
+## Key Security features ##
+
+* SSL Enabled
+* Anti Forgergy token security check
+* Exception handling using filter at global level
+
+
