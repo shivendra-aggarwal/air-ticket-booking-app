@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using ATS.DataAccess.Data;
 
 namespace ATS.DataAccess.Repositories
 {
@@ -18,12 +19,13 @@ namespace ATS.DataAccess.Repositories
         }
         public async Task<IEnumerable<AirVendor>> Get()
         {
+            InitializeDb.LoadAirVendors(context);
             return context.AirVendors.ToList();
         }
 
         public async Task<AirVendor> GetById(int id)
         {
-            return context.AirVendors.Where(a => a.AirVendorId == id).FirstOrDefault();
+            return context.AirVendors.Where(a => a.Id == id).FirstOrDefault();
         }
     }
 }
