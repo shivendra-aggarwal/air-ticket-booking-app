@@ -1,0 +1,51 @@
+﻿@using System.Linq;
+@model ATS.UI.Models.BookingViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Available Flights:</h2>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Seat No</th>
+                <th scope="col">Price (in Rs.)</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Flight No</th>
+                <th scope="col">Seat Type</th>
+                <th scope="col">AirLines</th>
+                <th scope="col">Select</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var seat in Model.AvailableSeats.OrderBy(s => s.FlightNumber).OrderBy(s => s.AvailableDate))
+                {
+                    <tr>
+                        <th scope="row">@seat.SeatNumber</th>
+                        <td>@seat.BasePrice</td>
+                        <td>@seat.AvailableDate.ToShortDateString()</td>
+                        <td>@seat.AvailableDate.ToShortTimeString()</td>
+                        <td>@seat.FlightNumber</td>
+                        <td>@seat.SeatType</td>
+                        <td>@seat.VendorName</td>
+                        <td>
+                            <label class="radio-inline">
+                                <input style="margin:-6px 0 0;" type="radio" name="@seat.ExternalId">
+                            </label>
+                        </td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+
+    <h2>Booking Details:</h2>
+
+</div>

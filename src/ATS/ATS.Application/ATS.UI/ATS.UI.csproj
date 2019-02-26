@@ -5,16 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ATS.Business\ATS.Business.csproj" />
+    <ProjectReference Include="..\ATS.DataAccess\ATS.DataAccess.csproj" />
+    <ProjectReference Include="..\ATS.DTO\ATS.DTO.csproj" />
+    <ProjectReference Include="..\ATS.Models\ATS.Models.csproj" />
   </ItemGroup>
 
 </Project>
