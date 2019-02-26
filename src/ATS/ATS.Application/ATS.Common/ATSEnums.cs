@@ -4,7 +4,7 @@ namespace ATS.Common
 {
     public class ATSEnums
     {
-        public enum AirProvider
+        public enum AirVendorEnum
         {
             GoAir,
             JetAir
