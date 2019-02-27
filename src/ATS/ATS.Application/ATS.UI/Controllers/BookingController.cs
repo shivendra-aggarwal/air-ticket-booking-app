@@ -23,7 +23,7 @@ namespace ATS.UI.Controllers
         {
             BookingViewModel bookingViewModel = new BookingViewModel();
             bookingViewModel.AvailableSeats = await airVendorManager.GetAllSeats();
-            
+
             return View(bookingViewModel);
         }
 
@@ -33,14 +33,23 @@ namespace ATS.UI.Controllers
             var bookingDetails = await bookingManager.CreateBooking(new DTO.BookingDTO()
             {
                 BookingReferenceNumber = Guid.NewGuid(),
-                BookingAmount = int.Parse(bookingViewModel.TotalAmount),
+                BookingAmount = int.Parse(string.IsNullOrEmpty(bookingViewModel.TotalAmount) ? "0" : bookingViewModel.TotalAmount),
                 BookingDate = DateTime.Now,
                 BookingExternalSeatId = Guid.Parse(bookingViewModel.SelectedSeatId),
                 BookingVendorName = bookingViewModel.SelectedSeatVendorName
             });
 
-            bookingViewModel.BookinStatus = Enum.GetName(typeof(BookingStatus), (BookingStatus)bookingDetails.BookingStatus);
+            if ((BookingStatus)bookingDetails.BookingStatus == BookingStatus.Confirmed)
+            {
+                bookingViewModel.BookingReferenceNumber = bookingDetails.BookingReferenceNumber;
+                return RedirectToAction("Confirmation", bookingViewModel);
+            }
 
+            return new EmptyResult();
+        }
+
+        public async Task<IActionResult> Confirmation(BookingViewModel bookingViewModel)
+        {
             return View(bookingViewModel);
         }
     }

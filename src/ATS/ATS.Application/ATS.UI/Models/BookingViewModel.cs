@@ -1,4 +1,5 @@
 ﻿using ATS.DTO;
+using System;
 using System.Collections.Generic;
 
 namespace ATS.UI.Models
@@ -13,5 +14,7 @@ namespace ATS.UI.Models
         public string TotalAmount { get; set; }
 
         public string BookinStatus { get; set; }
+
+        public Guid BookingReferenceNumber { get; set; }    
     }
 }

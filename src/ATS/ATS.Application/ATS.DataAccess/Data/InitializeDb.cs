@@ -24,7 +24,7 @@ namespace ATS.DataAccess.Data
                     Id = ++count,
                     AccessUrl = "https://localhost:44310/",
                     VendorName = AirVendorEnum.JetAir.ToString(),
-                    AvailabilityTestUrl = "https://localhost:44341/api/values",
+                    AvailabilityTestUrl = "https://localhost:44310/api/values",
                 });
 
             }

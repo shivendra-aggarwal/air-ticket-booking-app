@@ -50,6 +50,7 @@
     @using (Html.BeginForm("CreateBooking", "Booking", FormMethod.Post, new { name = "booking-select-form" }))
     {
         @Html.HiddenFor(model => model.SelectedSeatId, new { id = "selected_seat" })
+        @Html.HiddenFor(model => model.SelectedSeatVendorName, new { id = "selected_vendor" })
 
         <div class="form-group">
             <div class="row">

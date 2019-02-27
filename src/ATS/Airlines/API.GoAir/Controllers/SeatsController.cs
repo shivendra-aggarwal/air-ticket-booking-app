@@ -37,8 +37,9 @@ namespace API.GoAir.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult Put(string id, [FromBody]string value)
         {
+            return Ok();
         }
 
         // DELETE api/values/5

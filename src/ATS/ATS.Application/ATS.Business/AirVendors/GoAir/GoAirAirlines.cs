@@ -29,10 +29,11 @@ namespace ATS.Business.AirVendors.GoAir
                     var jsonString = await response.Content.ReadAsStringAsync();
                     var goAirSeats = JsonConvert.DeserializeObject<IEnumerable<GoAirSeat>>(jsonString);
 
-                    if(goAirSeats != null && goAirSeats.Any())
+                    if (goAirSeats != null && goAirSeats.Any())
                     {
-                        result = goAirSeats.Select(g => 
-                        new SeatDTO() {
+                        result = goAirSeats.Select(g =>
+                        new SeatDTO()
+                        {
                             ExternalId = g.ExternalId,
                             AvailableDate = g.Date,
                             BasePrice = g.BasePrice,
@@ -62,13 +63,10 @@ namespace ATS.Business.AirVendors.GoAir
             using (var httpClient = new HttpClient())
             {
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(bookingDTO), Encoding.UTF8, "application/json");
-                var response = await httpClient.PutAsync(bookingDTO.AccessUrl + "/api/Put", content);
+                var response = await httpClient.PutAsync(bookingDTO.AccessUrl + "/api/seats/" + bookingDTO.BookingExternalSeatId, content);
                 if (response.IsSuccessStatusCode)
                 {
-                    var jsonString = await response.Content.ReadAsStringAsync();
-                    var bookingConfirmation = JsonConvert.DeserializeObject<bool>(jsonString);
-
-                    result = bookingConfirmation;
+                    result = true;
                 }
             }
 

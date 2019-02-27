@@ -6,6 +6,7 @@
 
 function assignSeat(selectedSeatId) {
     $("#selected_seat").val(selectedSeatId);
+    $("#selected_vendor").val("GoAir");
     $("#create_request_button").prop("disabled", false);
 }
 
