@@ -28,4 +28,26 @@ Air Ticketing System (ATS) is a new startup which is focused towards its users. 
 * Anti Forgergy token security check
 * Exception handling using filter at global level
 
+## Design Patterns ##
 
+* Strategy Pattern - to utilize common behavior among multiple vendors
+* Factory Pattern - to get instance of each vendor
+
+## Environment pre-requisites ##
+
+* Windows 10 
+* Visual Studio 2017
+
+## Running app ##
+
+Step 1:  Open solution in Visual Studio 2017
+
+<img src="/src/images/solution.JPG" width="550"/>
+
+Step 2 : After successful build, choose project to run at startup
+
+<img src="/src/images/startup.JPG" width="550"/>
+
+Step 3 : if everything goes well, you should be seeing below screen
+
+<img src="/src/images/appui.JPG" width="550"/>
