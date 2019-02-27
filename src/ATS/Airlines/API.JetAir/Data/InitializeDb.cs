@@ -24,7 +24,7 @@ namespace API.JetAir.Data
                     SeatType = SeatType.Window.ToString(),
                     SeatNumber = 34,
                     ExternalId = Guid.NewGuid(),
-                    VendorName = VendorName.GirAir.ToString()
+                    VendorName = VendorName.JetAir.ToString()
                 });
 
                 context.Seats.Add(new Models.Seat()
@@ -38,7 +38,7 @@ namespace API.JetAir.Data
                     SeatType = SeatType.Aisle.ToString(),
                     SeatNumber = 33,
                     ExternalId = Guid.NewGuid(),
-                    VendorName = VendorName.GirAir.ToString()
+                    VendorName = VendorName.JetAir.ToString()
                 });
                 context.Seats.Add(new Models.Seat()
                 {
@@ -51,7 +51,7 @@ namespace API.JetAir.Data
                     SeatType = SeatType.Window.ToString(),
                     SeatNumber = 21,
                     ExternalId = Guid.NewGuid(),
-                    VendorName = VendorName.GirAir.ToString()
+                    VendorName = VendorName.JetAir.ToString()
                 });
                 context.Seats.Add(new Models.Seat()
                 {
@@ -64,7 +64,7 @@ namespace API.JetAir.Data
                     SeatType = SeatType.Window.ToString(),
                     SeatNumber = 20,
                     ExternalId = Guid.NewGuid(),
-                    VendorName = VendorName.GirAir.ToString()
+                    VendorName = VendorName.JetAir.ToString()
                 });
 
                 //context.Seats.Add(new Models.Seat()

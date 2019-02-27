@@ -10,18 +10,18 @@ using ATS.DataAccess.Data;
 
 namespace ATS.DataAccess.Repositories
 {
-    public class AirVendorRepository : IAirVendorRepository
+    public class BookingRepository : IBookingRepository
     {
         private ATSDbContext context;
-        public AirVendorRepository(ATSDbContext context)
+        public BookingRepository(ATSDbContext context)
         {
             this.context = context;
         }
 
-        public async Task<AirVendor> Create(AirVendor obj)
+        public async Task<Booking> Create(Booking obj)
         {
-            context.AirVendors = new HashSet<AirVendor>();
-            context.AirVendors.Add(obj);
+            context.Bookings = new HashSet<Booking>();
+            context.Bookings.Add(obj);
             obj.Id = await context.SaveChangesAsync();
             return obj;
         }
@@ -35,6 +35,16 @@ namespace ATS.DataAccess.Repositories
         public async Task<AirVendor> GetById(int id)
         {
             return context.AirVendors.Where(a => a.Id == id).FirstOrDefault();
+        }
+
+        Task<IEnumerable<Booking>> IRepository<Booking>.Get()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Booking> IRepository<Booking>.GetById(int Id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

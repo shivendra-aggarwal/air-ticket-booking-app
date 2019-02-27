@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ATS.Business.AirVendors
 {
-    public abstract class BaseAirVendor : IAirVendor
+    public abstract class BaseAirVendor : IAvailable
     {
         /// <summary>
         /// To check whether a given url server is up and running or not

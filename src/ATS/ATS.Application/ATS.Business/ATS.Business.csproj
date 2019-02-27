@@ -13,4 +13,9 @@
     <ProjectReference Include="..\ATS.DTO\ATS.DTO.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="FoodVendors\" />
+    <Folder Include="Interfaces\FoodVendors\" />
+  </ItemGroup>
+
 </Project>

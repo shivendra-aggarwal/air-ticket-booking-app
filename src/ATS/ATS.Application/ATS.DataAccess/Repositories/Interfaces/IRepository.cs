@@ -10,5 +10,7 @@ namespace ATS.DataAccess.Repositories.Interfaces
         Task<IEnumerable<T>> Get();
 
         Task<T> GetById(int Id);
+
+        Task<T> Create(T obj);
     }
 }

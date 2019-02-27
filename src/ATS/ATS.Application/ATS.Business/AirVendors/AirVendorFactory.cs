@@ -2,8 +2,6 @@
 using ATS.Business.AirVendors.JetAir;
 using ATS.Business.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using static ATS.Common.ATSEnums;
 
 

@@ -9,5 +9,10 @@ namespace ATS.Common
             GoAir,
             JetAir
         }
+
+        public enum BookingStatus
+        {
+            Confirmed = 1
+        }
     }
 }

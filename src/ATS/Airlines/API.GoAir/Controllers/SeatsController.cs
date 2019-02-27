@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using API.GoAir.Data;
+﻿using API.GoAir.Data;
 using API.GoAir.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace API.GoAir.Controllers
 {
@@ -21,7 +19,7 @@ namespace API.GoAir.Controllers
         public IEnumerable<Seat> Get()
         {
             var allocatedSeatIds = context.AllocatedSeats.Select(a => a.SeatId).ToArray();
-            return this.context.Seats.Where(s => !allocatedSeatIds.Contains(s.SeatId)).ToList();
+            return context.Seats.Where(s => !allocatedSeatIds.Contains(s.SeatId)).ToList();
         }
 
         // GET api/values/5

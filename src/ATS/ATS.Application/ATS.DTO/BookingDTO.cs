@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ATS.Models
+namespace ATS.DTO
 {
-    public class Booking : BaseEntity
+    public class BookingDTO
     {
         public Guid BookingReferenceNumber { get; set; }
 
@@ -13,6 +13,8 @@ namespace ATS.Models
         public Guid BookingExternalSeatId { get; set; }
 
         public string BookingVendorName { get; set; }
+
+        public string AccessUrl { get; set; }
 
         public decimal BookingAmount { get; set; }
     }
