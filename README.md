@@ -50,4 +50,8 @@ Step 2 : After successful build, choose project to run at startup
 
 Step 3 : if everything goes well, you should be seeing below screen
 
+** Screenshot 1
 <img src="/src/images/appui.JPG" width="550"/>
+
+** Screenshot 2
+<img src="/src/images/success.JPG" width="550"/>
