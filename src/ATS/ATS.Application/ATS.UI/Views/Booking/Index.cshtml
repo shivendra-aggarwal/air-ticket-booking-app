@@ -35,8 +35,8 @@
                         <td>@seat.SeatType</td>
                         <td>@seat.VendorName</td>
                         <td>
-                            <label class="radio-inline" id="@seat.ExternalId">
-                                <input style="margin:-6px 0 0;" type="radio" onclick="assignSeat(this)">
+                            <label class="radio-inline">
+                                <input style="margin:-6px 0 0;" type="radio" onclick="assignSeat('@seat.ExternalId')">
                             </label>
                         </td>
                     </tr>

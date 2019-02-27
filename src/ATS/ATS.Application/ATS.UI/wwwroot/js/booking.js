@@ -4,10 +4,7 @@
     });
 })
 
-function assignSeat(obj) {
-
-    console.log($(obj).parent().html());
-
+function assignSeat(selectedSeatId) {
     $("#selected_seat").val(selectedSeatId);
     $("#create_request_button").prop("disabled", false);
 }
