@@ -1,5 +1,5 @@
 # Air Ticketing System #
-Air Ticketing System (ATS) is a new startup which is focused towards its users.  The app is a window for multiple airlines to offer their best rates for customers.  Through this app following users can get following benefits:
+Air Ticketing System (ATS) is a new startup which is focused towards its users.  The app is a window for multiple airlines to offer their best rates for customers.  Through this app following benefits an user can get:
 
 * User can have view of multiple available airlines with respect to date and seat type.
 * User can select any type of meals as well
